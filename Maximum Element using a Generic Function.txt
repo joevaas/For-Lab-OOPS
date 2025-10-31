@@ -1,0 +1,40 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Create a generic method that accepts three parameters of the same type.
+
+Use the compareTo() method to compare the three values.
+
+Return the maximum value among them.
+
+Call the generic method with different data types (e.g., Integer, Double, String).
+
+Display the maximum value for each case.
+
+End the program.
+
+💻 Program:
+public class GenericMaxFinder {
+
+    // Step 1: Generic method to find maximum
+    public static <T extends Comparable<T>> T findMax(T a, T b, T c) {
+        T max = a;
+        if (b.compareTo(max) > 0)
+            max = b;
+        if (c.compareTo(max) > 0)
+            max = c;
+        return max;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Maximum of 10, 25, 17 is: " + findMax(10, 25, 17));
+        System.out.println("Maximum of 5.4, 2.8, 9.1 is: " + findMax(5.4, 2.8, 9.1));
+        System.out.println("Maximum of 'Apple', 'Banana', 'Mango' is: " + findMax("Apple", "Banana", "Mango"));
+    }
+}
+
+🖥️ Sample Output:
+Maximum of 10, 25, 17 is: 25
+Maximum of 5.4, 2.8, 9.1 is: 9.1
+Maximum of 'Apple', 'Banana', 'Mango' is: Mango

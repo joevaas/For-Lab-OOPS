@@ -1,0 +1,59 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Define a generic class with a type parameter <T>.
+
+Include a variable of type T and a constructor to initialize it.
+
+Create a method to display the value of the variable.
+
+In the main class, create objects of the generic class for different data types (like Integer, Double, and String).
+
+Display their values.
+
+End the program.
+
+💻 Program:
+// Step 1: Define a generic class
+class GenericClass<T> {
+    T value;
+
+    // Constructor
+    GenericClass(T val) {
+        value = val;
+    }
+
+    // Method to display the value
+    void showType() {
+        System.out.println("Type of T: " + value.getClass().getName());
+        System.out.println("Value: " + value);
+    }
+}
+
+// Step 2: Main class
+public class GenericClassDemo {
+    public static void main(String[] args) {
+        // Integer type
+        GenericClass<Integer> intObj = new GenericClass<>(100);
+        intObj.showType();
+
+        // Double type
+        GenericClass<Double> doubleObj = new GenericClass<>(25.75);
+        doubleObj.showType();
+
+        // String type
+        GenericClass<String> stringObj = new GenericClass<>("Hello Generics");
+        stringObj.showType();
+    }
+}
+
+🖥️ Sample Output:
+Type of T: java.lang.Integer
+Value: 100
+
+Type of T: java.lang.Double
+Value: 25.75
+
+Type of T: java.lang.String
+Value: Hello Generics

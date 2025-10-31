@@ -1,0 +1,73 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Import the java.io.* package.
+
+Read the file name from the user using Scanner.
+
+Create a File object using the given file name.
+
+Check if the file exists using exists().
+
+If it exists:
+
+Check if it’s readable using canRead().
+
+Check if it’s writable using canWrite().
+
+Check whether it’s a file or directory using isFile() or isDirectory().
+
+Get the file size using length().
+
+Display the information.
+
+If it doesn’t exist, display an appropriate message.
+
+End the program.
+
+💻 Program:
+import java.io.File;
+import java.util.Scanner;
+
+public class FileInfo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the file name (with path if needed): ");
+        String fileName = sc.nextLine();
+
+        File file = new File(fileName);
+
+        if (file.exists()) {
+            System.out.println("\nFile Information:");
+            System.out.println("--------------------------");
+            System.out.println("File Name: " + file.getName());
+            System.out.println("Path: " + file.getAbsolutePath());
+            System.out.println("Readable: " + file.canRead());
+            System.out.println("Writable: " + file.canWrite());
+            System.out.println("Is Directory: " + file.isDirectory());
+            System.out.println("Is File: " + file.isFile());
+            System.out.println("File Size: " + file.length() + " bytes");
+        } else {
+            System.out.println("\nThe specified file does not exist.");
+        }
+
+        sc.close();
+    }
+}
+
+🖥️ Sample Output:
+Enter the file name (with path if needed): test.txt
+
+File Information:
+--------------------------
+File Name: test.txt
+Path: C:\Users\Admin\Documents\test.txt
+Readable: true
+Writable: true
+Is Directory: false
+Is File: true
+File Size: 124 bytes
+
+Enter the file name (with path if needed): notfound.txt
+The specified file does not exist.

@@ -1,0 +1,79 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Define an interface with one or more abstract methods.
+
+Create a class that implements the interface.
+
+Provide definitions for the abstract methods inside the implementing class.
+
+In the main function, create an object of the implementing class and call the interface methods.
+
+Display the output.
+
+End the program.
+
+💻 Program:
+// Step 1: Define an interface
+interface Shape {
+    void draw();
+    double area();
+}
+
+// Step 2: Implement the interface in a class
+class Circle implements Shape {
+    double radius;
+
+    Circle(double r) {
+        radius = r;
+    }
+
+    public void draw() {
+        System.out.println("Drawing a Circle...");
+    }
+
+    public double area() {
+        return 3.1416 * radius * radius;
+    }
+}
+
+// Step 3: Another class implementing the same interface
+class Rectangle implements Shape {
+    double length, width;
+
+    Rectangle(double l, double w) {
+        length = l;
+        width = w;
+    }
+
+    public void draw() {
+        System.out.println("Drawing a Rectangle...");
+    }
+
+    public double area() {
+        return length * width;
+    }
+}
+
+// Step 4: Main class
+public class InterfaceDemo {
+    public static void main(String[] args) {
+        Shape c = new Circle(5);
+        c.draw();
+        System.out.println("Area of Circle: " + c.area());
+
+        System.out.println();
+
+        Shape r = new Rectangle(4, 6);
+        r.draw();
+        System.out.println("Area of Rectangle: " + r.area());
+    }
+}
+
+🖥️ Sample Output:
+Drawing a Circle...
+Area of Circle: 78.54
+
+Drawing a Rectangle...
+Area of Rectangle: 24.0

@@ -1,0 +1,60 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Create a class that extends the Thread class or implements the Runnable interface.
+
+Override the run() method to define the code that each thread will execute.
+
+Create multiple thread objects and start them using the start() method.
+
+Observe concurrent execution of the threads.
+
+End the program.
+
+💻 Program:
+// Step 1: Create a class extending Thread
+class MyThread extends Thread {
+    String threadName;
+
+    MyThread(String name) {
+        threadName = name;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println(threadName + " is running: " + i);
+            try {
+                Thread.sleep(500); // pause for 0.5 second
+            } catch (InterruptedException e) {
+                System.out.println(threadName + " interrupted.");
+            }
+        }
+        System.out.println(threadName + " has finished execution.\n");
+    }
+}
+
+// Step 2: Main class
+public class MultiThreadDemo {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread("Thread 1");
+        MyThread t2 = new MyThread("Thread 2");
+
+        t1.start();
+        t2.start();
+    }
+}
+
+🖥️ Sample Output:
+Thread 1 is running: 1
+Thread 2 is running: 1
+Thread 1 is running: 2
+Thread 2 is running: 2
+Thread 1 is running: 3
+Thread 2 is running: 3
+Thread 1 is running: 4
+Thread 2 is running: 4
+Thread 1 is running: 5
+Thread 2 is running: 5
+Thread 1 has finished execution.
+Thread 2 has finished execution.

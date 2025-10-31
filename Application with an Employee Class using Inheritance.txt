@@ -1,0 +1,66 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Create a base class named Employee with data members such as name, empId, and salary.
+
+Create a subclass named Manager that extends Employee.
+
+Add additional data members in Manager (like bonus).
+
+Use a method in both classes to display the details.
+
+Create an object of the Manager class and display all details.
+
+End the program.
+
+💻 Program:
+// Base class
+class Employee {
+    String name;
+    int empId;
+    double salary;
+
+    Employee(String n, int id, double s) {
+        name = n;
+        empId = id;
+        salary = s;
+    }
+
+    void display() {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Employee ID: " + empId);
+        System.out.println("Salary: " + salary);
+    }
+}
+
+// Derived class
+class Manager extends Employee {
+    double bonus;
+
+    Manager(String n, int id, double s, double b) {
+        super(n, id, s); // call base class constructor
+        bonus = b;
+    }
+
+    void display() {
+        super.display();
+        System.out.println("Bonus: " + bonus);
+        System.out.println("Total Salary: " + (salary + bonus));
+    }
+}
+
+// Main class
+public class EmployeeInheritance {
+    public static void main(String[] args) {
+        Manager m = new Manager("Rahul", 101, 50000, 10000);
+        m.display();
+    }
+}
+
+🖥️ Sample Output:
+Employee Name: Rahul
+Employee ID: 101
+Salary: 50000.0
+Bonus: 10000.0
+Total Salary: 60000.0

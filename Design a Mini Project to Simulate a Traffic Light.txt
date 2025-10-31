@@ -1,0 +1,78 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Define a class TrafficLight that displays messages based on the color of the light.
+
+Use an enum or switch-case to represent the three colors: Red, Yellow, and Green.
+
+Implement a loop that changes the color at regular time intervals using Thread.sleep().
+
+Display appropriate messages for each color:
+
+Red → "STOP"
+
+Yellow → "READY"
+
+Green → "GO"
+
+Repeat the sequence continuously.
+
+End the program.
+
+💻 Program:
+// Mini Project: Traffic Light Simulation
+
+class TrafficLight extends Thread {
+    private String[] lights = {"RED", "YELLOW", "GREEN"};
+
+    public void run() {
+        try {
+            while (true) {
+                for (String light : lights) {
+                    switch (light) {
+                        case "RED":
+                            System.out.println("RED Light - STOP 🚦");
+                            Thread.sleep(3000); // Wait 3 seconds
+                            break;
+
+                        case "YELLOW":
+                            System.out.println("YELLOW Light - READY ⚠️");
+                            Thread.sleep(2000); // Wait 2 seconds
+                            break;
+
+                        case "GREEN":
+                            System.out.println("GREEN Light - GO ✅");
+                            Thread.sleep(3000); // Wait 3 seconds
+                            break;
+                    }
+                    System.out.println("-----------------------------");
+                }
+            }
+        } catch (InterruptedException e) {
+            System.out.println("Traffic Light simulation interrupted.");
+        }
+    }
+}
+
+// Main Class
+public class TrafficLightSimulation {
+    public static void main(String[] args) {
+        TrafficLight t = new TrafficLight();
+        t.start();  // Start simulation
+    }
+}
+
+🖥️ Sample Output:
+RED Light - STOP 🚦
+-----------------------------
+YELLOW Light - READY ⚠️
+-----------------------------
+GREEN Light - GO ✅
+-----------------------------
+RED Light - STOP 🚦
+-----------------------------
+YELLOW Light - READY ⚠️
+-----------------------------
+GREEN Light - GO ✅
+-----------------------------

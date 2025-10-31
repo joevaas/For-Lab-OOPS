@@ -1,0 +1,74 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Import the java.io.File class.
+
+Accept a file name (or path) from the user using Scanner.
+
+Create a File object using the provided file name.
+
+Check whether the file exists using exists().
+
+If it exists, display:
+
+Whether it is readable (canRead())
+
+Whether it is writable (canWrite())
+
+Whether it is a file or directory (isFile() / isDirectory())
+
+File size in bytes (length())
+
+If it does not exist, display a message saying the file is not found.
+
+End the program.
+
+💻 Program:
+import java.io.File;
+import java.util.Scanner;
+
+public class FileInfo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter file name with path: ");
+        String filename = sc.nextLine();
+
+        File file = new File(filename);
+
+        if (file.exists()) {
+            System.out.println("\nFile Information:");
+            System.out.println("File Name: " + file.getName());
+            System.out.println("Readable: " + file.canRead());
+            System.out.println("Writable: " + file.canWrite());
+            System.out.println("Is a File: " + file.isFile());
+            System.out.println("Is a Directory: " + file.isDirectory());
+            System.out.println("File Size (in bytes): " + file.length());
+        } else {
+            System.out.println("File does not exist!");
+        }
+
+        sc.close();
+    }
+}
+
+🖥️ Sample Output:
+
+✅ Case 1 (File exists):
+
+Enter file name with path: example.txt
+
+File Information:
+File Name: example.txt
+Readable: true
+Writable: true
+Is a File: true
+Is a Directory: false
+File Size (in bytes): 124
+
+
+❌ Case 2 (File not found):
+
+Enter file name with path: abc.txt
+File does not exist!

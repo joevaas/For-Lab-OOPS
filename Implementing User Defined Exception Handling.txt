@@ -1,0 +1,62 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Define a custom exception class that extends the Exception class.
+
+In the main class, take user input (for example, an age).
+
+If the input violates a rule (like age < 18), throw the custom exception.
+
+Catch the exception and display an appropriate message.
+
+End the program.
+
+💻 Program:
+import java.util.Scanner;
+
+// Step 1: Define user-defined exception
+class AgeInvalidException extends Exception {
+    public AgeInvalidException(String message) {
+        super(message);
+    }
+}
+
+// Step 2: Main class
+public class UserDefinedExceptionExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        try {
+            System.out.print("Enter your age: ");
+            int age = sc.nextInt();
+
+            // Step 3: Check condition
+            if (age < 18) {
+                // Step 4: Throw custom exception
+                throw new AgeInvalidException("Age must be 18 or above to vote!");
+            }
+
+            System.out.println("You are eligible to vote!");
+        }
+        catch (AgeInvalidException e) {
+            // Step 5: Handle exception
+            System.out.println("Exception Caught: " + e.getMessage());
+        }
+
+        sc.close();
+    }
+}
+
+🖥️ Sample Output:
+
+✅ Case 1 (Valid Input):
+
+Enter your age: 22
+You are eligible to vote!
+
+
+❌ Case 2 (Invalid Input):
+
+Enter your age: 15
+Exception Caught: Age must be 18 or above to vote!

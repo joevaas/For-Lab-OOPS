@@ -1,0 +1,120 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Input the number of elements and store them in an array.
+
+Sort the array using Selection Sort or Insertion Sort.
+
+Display the sorted array.
+
+Ask the user for an element to search.
+
+Apply Binary Search to find the element’s position.
+
+Display whether the element is found or not.
+
+End the program.
+
+💻 Program:
+import java.util.Scanner;
+
+public class BinarySearchSort {
+    // Selection Sort
+    public static void selectionSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[min])
+                    min = j;
+            }
+            int temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    // Insertion Sort
+    public static void insertionSort(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    // Binary Search
+    public static int binarySearch(int[] arr, int key) {
+        int low = 0, high = arr.length - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == key)
+                return mid;
+            else if (arr[mid] < key)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return -1;
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+        for (int i = 0; i < n; i++)
+            arr[i] = sc.nextInt();
+
+        System.out.println("\nChoose sorting method:");
+        System.out.println("1. Selection Sort");
+        System.out.println("2. Insertion Sort");
+        int choice = sc.nextInt();
+
+        if (choice == 1)
+            selectionSort(arr);
+        else
+            insertionSort(arr);
+
+        System.out.println("\nSorted Array:");
+        for (int x : arr)
+            System.out.print(x + " ");
+
+        System.out.print("\n\nEnter element to search: ");
+        int key = sc.nextInt();
+
+        int pos = binarySearch(arr, key);
+
+        if (pos != -1)
+            System.out.println(key + " found at position " + (pos + 1));
+        else
+            System.out.println(key + " not found!");
+
+        sc.close();
+    }
+}
+
+🖥️ Sample Output:
+Enter number of elements: 5
+Enter elements:
+7 3 9 1 5
+
+Choose sorting method:
+1. Selection Sort
+2. Insertion Sort
+1
+
+Sorted Array:
+1 3 5 7 9 
+
+Enter element to search: 5
+5 found at position 3

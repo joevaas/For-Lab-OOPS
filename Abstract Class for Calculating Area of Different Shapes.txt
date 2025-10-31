@@ -1,0 +1,65 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Create an abstract class named Shape with an abstract method area().
+
+Create subclasses Circle and Rectangle that extend the Shape class.
+
+Implement the area() method in each subclass.
+
+In the main class, create objects for both shapes.
+
+Call the area() method for each and display the result.
+
+End the program.
+
+💻 Program:
+// Step 1: Create abstract class
+abstract class Shape {
+    abstract void area();  // abstract method
+}
+
+// Step 2: Circle class
+class Circle extends Shape {
+    double radius;
+
+    Circle(double r) {
+        radius = r;
+    }
+
+    void area() {
+        double a = 3.14 * radius * radius;
+        System.out.println("Area of Circle: " + a);
+    }
+}
+
+// Step 3: Rectangle class
+class Rectangle extends Shape {
+    double length, breadth;
+
+    Rectangle(double l, double b) {
+        length = l;
+        breadth = b;
+    }
+
+    void area() {
+        double a = length * breadth;
+        System.out.println("Area of Rectangle: " + a);
+    }
+}
+
+// Step 4: Main class
+public class AbstractShapeDemo {
+    public static void main(String[] args) {
+        Shape c = new Circle(5);
+        Shape r = new Rectangle(4, 6);
+
+        c.area();
+        r.area();
+    }
+}
+
+🖥️ Sample Output:
+Area of Circle: 78.5
+Area of Rectangle: 24.0

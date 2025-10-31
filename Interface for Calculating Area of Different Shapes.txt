@@ -1,0 +1,65 @@
+⚙️ Algorithm:
+
+Start the program.
+
+Define an interface named Shape with a method area().
+
+Create classes Circle and Rectangle that implement the Shape interface.
+
+Provide implementation for the area() method in each class.
+
+In the main() method, create objects for both classes.
+
+Call the area() method to display the area of each shape.
+
+End the program.
+
+💻 Program:
+// Step 1: Create interface
+interface Shape {
+    void area();
+}
+
+// Step 2: Implement in Circle class
+class Circle implements Shape {
+    double radius;
+
+    Circle(double r) {
+        radius = r;
+    }
+
+    public void area() {
+        double a = 3.14 * radius * radius;
+        System.out.println("Area of Circle: " + a);
+    }
+}
+
+// Step 3: Implement in Rectangle class
+class Rectangle implements Shape {
+    double length, breadth;
+
+    Rectangle(double l, double b) {
+        length = l;
+        breadth = b;
+    }
+
+    public void area() {
+        double a = length * breadth;
+        System.out.println("Area of Rectangle: " + a);
+    }
+}
+
+// Step 4: Main class
+public class InterfaceShapeDemo {
+    public static void main(String[] args) {
+        Shape c = new Circle(5);
+        Shape r = new Rectangle(4, 6);
+
+        c.area();
+        r.area();
+    }
+}
+
+🖥️ Sample Output:
+Area of Circle: 78.5
+Area of Rectangle: 24.0

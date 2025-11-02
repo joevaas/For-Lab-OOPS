@@ -1,194 +1,79 @@
-⚙️ Algorithm (Stack):
-
-Start the program.
-
-Create a class StackDemo with methods push(), pop(), and display().
-
-Use an array to store elements of the stack.
-
-Increment top when pushing and decrement when popping.
-
-Prevent overflow and underflow using condition checks.
-
-Display the stack elements.
-
-End.
-
-⚙️ Algorithm (Queue):
-
-Start the program.
-
-Create a class QueueDemo with methods enqueue(), dequeue(), and display().
-
-Use an array to store elements of the queue.
-
-Use front and rear pointers to manage insertion and deletion.
-
-Prevent overflow and underflow using condition checks.
-
-Display the queue elements.
-
-End.
-
 💻 Program:
-import java.util.Scanner;
+public class Stack {
+    private int[] stackArray;
+    private int top;
+    private int maxSize;
 
-// Stack Implementation
-class StackDemo {
-    int maxSize = 5;
-    int stack[] = new int[maxSize];
-    int top = -1;
+    // Constructor
+    public Stack(int size) {
+        maxSize = size;
+        stackArray = new int[maxSize];
+        top = -1;
+    }
 
-    void push(int item) {
-        if (top == maxSize - 1)
-            System.out.println("Stack Overflow!");
-        else {
-            stack[++top] = item;
-            System.out.println(item + " pushed into stack.");
+    // Push element onto stack
+    public void push(int value) {
+        if (isFull()) {
+            System.out.println("Stack Overflow! Cannot push " + value);
+        } else {
+            stackArray[++top] = value;
+            System.out.println(value + " pushed to stack.");
         }
     }
 
-    void pop() {
-        if (top == -1)
+    // Pop element from stack
+    public int pop() {
+        if (isEmpty()) {
             System.out.println("Stack Underflow!");
-        else
-            System.out.println(stack[top--] + " popped from stack.");
+            return -1;
+        } else {
+            return stackArray[top--];
+        }
     }
 
-    void display() {
-        if (top == -1)
-            System.out.println("Stack is Empty!");
-        else {
+    // Peek top element
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return -1;
+        }
+        return stackArray[top];
+    }
+
+    // Check if stack is empty
+    public boolean isEmpty() {
+        return (top == -1);
+    }
+
+    // Check if stack is full
+    public boolean isFull() {
+        return (top == maxSize - 1);
+    }
+
+    // Display stack elements
+    public void display() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+        } else {
             System.out.print("Stack elements: ");
-            for (int i = top; i >= 0; i--)
-                System.out.print(stack[i] + " ");
-            System.out.println();
-        }
-    }
-}
-
-// Queue Implementation
-class QueueDemo {
-    int maxSize = 5;
-    int queue[] = new int[maxSize];
-    int front = 0, rear = -1, count = 0;
-
-    void enqueue(int item) {
-        if (count == maxSize)
-            System.out.println("Queue Overflow!");
-        else {
-            rear = (rear + 1) % maxSize;
-            queue[rear] = item;
-            count++;
-            System.out.println(item + " enqueued into queue.");
-        }
-    }
-
-    void dequeue() {
-        if (count == 0)
-            System.out.println("Queue Underflow!");
-        else {
-            System.out.println(queue[front] + " dequeued from queue.");
-            front = (front + 1) % maxSize;
-            count--;
-        }
-    }
-
-    void display() {
-        if (count == 0)
-            System.out.println("Queue is Empty!");
-        else {
-            System.out.print("Queue elements: ");
-            for (int i = 0; i < count; i++)
-                System.out.print(queue[(front + i) % maxSize] + " ");
-            System.out.println();
-        }
-    }
-}
-
-// Main class
-public class StackQueueDemo {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        StackDemo stack = new StackDemo();
-        QueueDemo queue = new QueueDemo();
-
-        int choice;
-        do {
-            System.out.println("\n--- Data Structure Menu ---");
-            System.out.println("1. Push (Stack)");
-            System.out.println("2. Pop (Stack)");
-            System.out.println("3. Display Stack");
-            System.out.println("4. Enqueue (Queue)");
-            System.out.println("5. Dequeue (Queue)");
-            System.out.println("6. Display Queue");
-            System.out.println("7. Exit");
-            System.out.print("Enter your choice: ");
-            choice = sc.nextInt();
-
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter element to push: ");
-                    stack.push(sc.nextInt());
-                    break;
-                case 2:
-                    stack.pop();
-                    break;
-                case 3:
-                    stack.display();
-                    break;
-                case 4:
-                    System.out.print("Enter element to enqueue: ");
-                    queue.enqueue(sc.nextInt());
-                    break;
-                case 5:
-                    queue.dequeue();
-                    break;
-                case 6:
-                    queue.display();
-                    break;
-                case 7:
-                    System.out.println("Exiting...");
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
+            for (int i = 0; i <= top; i++) {
+                System.out.print(stackArray[i] + " ");
             }
-        } while (choice != 7);
-
-        sc.close();
+            System.out.println();
+        }
     }
 }
 
 🖥️ Sample Output:
---- Data Structure Menu ---
-1. Push (Stack)
-2. Pop (Stack)
-3. Display Stack
-4. Enqueue (Queue)
-5. Dequeue (Queue)
-6. Display Queue
-7. Exit
-Enter your choice: 1
-Enter element to push: 10
-10 pushed into stack.
-
-Enter your choice: 1
-Enter element to push: 20
-20 pushed into stack.
-
-Enter your choice: 3
-Stack elements: 20 10 
-
-Enter your choice: 4
-Enter element to enqueue: 5
-5 enqueued into queue.
-
-Enter your choice: 4
-Enter element to enqueue: 15
-15 enqueued into queue.
-
-Enter your choice: 6
-Queue elements: 5 15 
-
-Enter your choice: 7
-Exiting...
+10 pushed to stack.
+20 pushed to stack.
+30 pushed to stack.
+Stack Overflow! Cannot push 40
+Stack elements: 10 20 30 
+Top element is: 30
+30 popped from stack.
+20 popped from stack.
+10 popped from stack.
+Stack Underflow!
+-1 popped from stack.
+Stack is empty.

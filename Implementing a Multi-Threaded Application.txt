@@ -1,60 +1,53 @@
-⚙️ Algorithm:
+// Example of a Multithreaded Application in Java
 
-Start the program.
-
-Create a class that extends the Thread class or implements the Runnable interface.
-
-Override the run() method to define the code that each thread will execute.
-
-Create multiple thread objects and start them using the start() method.
-
-Observe concurrent execution of the threads.
-
-End the program.
-
-💻 Program:
-// Step 1: Create a class extending Thread
-class MyThread extends Thread {
-    String threadName;
-
-    MyThread(String name) {
-        threadName = name;
-    }
-
+// Thread 1 - extends Thread
+class Task1 extends Thread {
     public void run() {
         for (int i = 1; i <= 5; i++) {
-            System.out.println(threadName + " is running: " + i);
+            System.out.println("Task 1 - Count: " + i);
             try {
-                Thread.sleep(500); // pause for 0.5 second
+                Thread.sleep(500); // Pause for 0.5 seconds
             } catch (InterruptedException e) {
-                System.out.println(threadName + " interrupted.");
+                System.out.println(e);
             }
         }
-        System.out.println(threadName + " has finished execution.\n");
     }
 }
 
-// Step 2: Main class
-public class MultiThreadDemo {
-    public static void main(String[] args) {
-        MyThread t1 = new MyThread("Thread 1");
-        MyThread t2 = new MyThread("Thread 2");
+// Thread 2 - implements Runnable
+class Task2 implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Task 2 - Count: " + i);
+            try {
+                Thread.sleep(700); // Pause for 0.7 seconds
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+    }
+}
 
+public class MultiThreadExample {
+    public static void main(String[] args) {
+        // Create objects
+        Task1 t1 = new Task1();
+        Thread t2 = new Thread(new Task2());
+
+        // Start both threads
         t1.start();
         t2.start();
+
+        // Main thread work
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Main Thread - Count: " + i);
+            try {
+                Thread.sleep(600);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+
+        System.out.println("All threads finished execution!");
     }
 }
-
-🖥️ Sample Output:
-Thread 1 is running: 1
-Thread 2 is running: 1
-Thread 1 is running: 2
-Thread 2 is running: 2
-Thread 1 is running: 3
-Thread 2 is running: 3
-Thread 1 is running: 4
-Thread 2 is running: 4
-Thread 1 is running: 5
-Thread 2 is running: 5
-Thread 1 has finished execution.
-Thread 2 has finished execution.
